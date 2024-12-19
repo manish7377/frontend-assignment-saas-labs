@@ -45,19 +45,21 @@ const App = () => {
 
   return (
     <div className="app-container">
-      <h1>SaaS Labs Assignment</h1>
+      <header className="header" role="banner">
+        <h1>SaaS Labs Assignment</h1>
+      </header>
       {isLoading ? (
-        <p>Loading...</p>
+        <p className="loading" role="status">Loading...</p>
       ) : error ? (
-        <p className="error">Error: {error}</p>
+        <p className="error" role="alert">Error: {error}</p>
       ) : (
         <>
-          <table>
+          <table className="styled-table" aria-label="Kickstarter projects list">
             <thead>
               <tr>
-                <th>S.No.</th>
-                <th>Percentage Funded</th>
-                <th>Amount Pledged</th>
+                <th scope="col">S.No.</th>
+                <th scope="col">Percentage Funded</th>
+                <th scope="col">Amount Pledged</th>
               </tr>
             </thead>
             <tbody>
@@ -70,14 +72,14 @@ const App = () => {
               ))}
             </tbody>
           </table>
-          <div className="pagination">
-            <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+          <div className="pagination" role="navigation" aria-label="Pagination Navigation">
+            <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1} aria-label="Previous Page">
               Previous
             </button>
             <span>
               Page {currentPage} of {totalPages}
             </span>
-            <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+            <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages} aria-label="Next Page">
               Next
             </button>
           </div>
